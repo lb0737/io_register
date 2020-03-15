@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出入登记</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+             <th><input type="checkbox" id="action-toggle"></th>
+             <th>序号</th>
+             <th>姓名</th>
+             <th>性别</th>
+             <th>电话</th>
+             <th>身份证</th>
+             <th>住址</th>
+             <th>登记时间</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for context in contexts %}
+             <tr>
+                <td><input type="checkbox" id="action-toggle"></td>
+                <td>{{ context.id }}</td>
+                <td>{{ context.name }}</td>
+                <td>{{ context.get_sex_display }}</td>
+                <td>{{ context.phone }}</td>
+                <td>{{ context.cid }}</td>
+                <td>{{ context.addr }}</td>
+                <td>{{ context.add_time }}</td>
+             </tr>   
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    {{ errors }}
+    <form action="\" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="登记">
+    </form>
+</body>
+</html>
